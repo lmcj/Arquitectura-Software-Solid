@@ -1,8 +1,5 @@
 package dominio;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Fundacion {
 
     private int idFundacion;
@@ -15,10 +12,9 @@ public class Fundacion {
     private GestorVoluntarios gestorVoluntarios; 
     private GestorMascotas gestorMascotas;
 
-    public Fundacion() {
-        gestorEmpleados = new GestorEmpleados();
+    public Fundacion() {  
     }
-
+    
     public Fundacion(int idFundacion) {
         this.idFundacion = idFundacion;
     }

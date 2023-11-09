@@ -1,18 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dominio;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Casallas
- */
 public class GestorEmpleados {
-    
+
     private List<Empleado> empleados = new ArrayList<>();
 
     public Empleado agregarEmpleado(String nombre, String cargo, String funciones, Fundacion fundacion) {
@@ -43,7 +35,7 @@ public class GestorEmpleados {
     }
 
     public void eliminarEmpleado(String nombre) {
-         for (Empleado empleado : empleados) {
+        for (Empleado empleado : empleados) {
             if (empleado.getNombre().equals(nombre)) {
                 empleados.remove(empleado);
                 break;
@@ -51,5 +43,4 @@ public class GestorEmpleados {
         }
     }
 
-    
 }

@@ -1,17 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dominio;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Casallas
- */
 public class GestorMascotas {
+
     private List<Mascota> mascotas = new ArrayList<>();
 
     public Mascota agregarMascota(String nombre, String especie, String raza, String genero, int edad, String color, String estado_salud) {
@@ -28,7 +21,7 @@ public class GestorMascotas {
     }
 
     public void eliminarMascota(String nombre) {
-       for (Mascota mascota : mascotas) {
+        for (Mascota mascota : mascotas) {
             if (mascota.getNombre().equals(nombre)) {
                 mascotas.remove(mascota);
                 break;

@@ -1,10 +1,8 @@
 package DAO;
 
-import conexiondb.DAOGenerico;
 import dominio.Empleado;
 import dominio.Fundacion;
 import gestorTransacciones.GestorTransacciones;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,24 +14,24 @@ import InterfazDAO.IDAO_1;
 import InterfazDAO.IDAO_2;
 import conexiondb.IConfiguracionBaseDatos;
 
-public class DAOEmpleado extends DAOGenerico implements IDAO_1<Empleado>,IDAO_2<Empleado>{
+public class DAOEmpleado implements IDAO_1<Empleado>, IDAO_2<Empleado> {
 
     private Connection conexion;
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
     private GestorTransacciones gestorTransacciones;
+    private final IConfiguracionBaseDatos iConfiguracionBaseDatos;
 
-    public DAOEmpleado(IConfiguracionBaseDatos configuracion) {
-        super(configuracion);
-        gestorTransacciones = new GestorTransacciones();
+    public DAOEmpleado(IConfiguracionBaseDatos iConfiguracionBaseDatos) {
+        this.iConfiguracionBaseDatos = iConfiguracionBaseDatos;
     }
 
     @Override
     public boolean insertar(Empleado empleado) {
-        String sql = "INSERT INTO mydb.empleados (nombre, cargo, funciones, Fundacion_idFundacion) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO empleados (nombre, cargo, funciones, Fundacion_idFundacion) VALUES (?, ?, ?, ?)";
 
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             gestorTransacciones.iniciarTransaccion(conexion);
 
             preparedStatement = conexion.prepareStatement(sql);
@@ -67,9 +65,9 @@ public class DAOEmpleado extends DAOGenerico implements IDAO_1<Empleado>,IDAO_2<
     @Override
     public List<Empleado> listar() throws SQLException {
         List<Empleado> lista = new ArrayList<>();
-        String sql = "SELECT * FROM mydb.empleados";
+        String sql = "SELECT * FROM empleados";
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             preparedStatement = conexion.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -92,9 +90,9 @@ public class DAOEmpleado extends DAOGenerico implements IDAO_1<Empleado>,IDAO_2<
     @Override
     public List<Empleado> listarSegunFundacion(Fundacion fundacion) {
         List<Empleado> lista = new ArrayList<>();
-        String sql = "SELECT * FROM mydb.empleados WHERE Fundacion_idFundacion = ?";
+        String sql = "SELECT * FROM empleados WHERE Fundacion_idFundacion = ?";
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             preparedStatement = conexion.prepareStatement(sql);
             preparedStatement.setInt(1, fundacion.getIdFundacion());
             resultSet = preparedStatement.executeQuery();
@@ -118,10 +116,10 @@ public class DAOEmpleado extends DAOGenerico implements IDAO_1<Empleado>,IDAO_2<
 
     @Override
     public boolean editar(Empleado empleado) {
-        String sql = "UPDATE mydb.empleados SET nombre=?, cargo=?, funciones=? WHERE idEmpleados=?";
+        String sql = "UPDATE empleados SET nombre=?, cargo=?, funciones=? WHERE idEmpleados=?";
 
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             gestorTransacciones.iniciarTransaccion(conexion);
 
             preparedStatement = conexion.prepareStatement(sql);
@@ -154,9 +152,9 @@ public class DAOEmpleado extends DAOGenerico implements IDAO_1<Empleado>,IDAO_2<
 
     @Override
     public Empleado buscar(Empleado empleado) {
-        String sql = "SELECT * FROM mydb.empleados WHERE idEmpleado=?; ";
+        String sql = "SELECT * FROM empleados WHERE idEmpleado=?; ";
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             preparedStatement = conexion.prepareStatement(sql);
             preparedStatement.setInt(1, empleado.getIdEmpleado());
             resultSet = preparedStatement.executeQuery();
@@ -178,10 +176,10 @@ public class DAOEmpleado extends DAOGenerico implements IDAO_1<Empleado>,IDAO_2<
 
     @Override
     public boolean eliminar(Empleado empleado) {
-        String sql = "DELETE FROM mydb.empleados WHERE idEmpleados = ? AND Fundacion_idFundacion = ?";
+        String sql = "DELETE FROM empleados WHERE idEmpleados = ? AND Fundacion_idFundacion = ?";
 
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             gestorTransacciones.iniciarTransaccion(conexion);
 
             preparedStatement = conexion.prepareStatement(sql);
@@ -210,4 +208,3 @@ public class DAOEmpleado extends DAOGenerico implements IDAO_1<Empleado>,IDAO_2<
         }
     }
 }
-

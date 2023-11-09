@@ -2,9 +2,10 @@ package com.mycompany.fundacion;
 
 import DAO.DAOFundacion;
 import java.util.Date;
-import conexiondb.ConfiguracionMySQL;
+import conexiondb.ConexionFactory;
 import DAO.DAOEmpleado;
 import DAO.DAOFundacion;
+import DTO.DTOFundacion;
 import dominio.Fundacion;
 import dominio.CalculadoraSalario;
 import dominio.Empleado;
@@ -18,72 +19,89 @@ import controladores.ControladorPrincipal;
 
 public class Main {
 
-public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException {
 
-//        IConfiguracionBaseDatos configuracion = new ConfiguracionMySQL();
-//        ControladorPrincipal controladorPrincipal = new ControladorPrincipal(configuracion);
-//        ControladorFundacion controladorFundacion = controladorPrincipal.getControladorFundacion();
-//        List<Fundacion> fundaciones = controladorFundacion.obtenerTodasLasFundaciones();
-//        DAOFundacion insertFundacion = new DAOFundacion(configuracion);
-//        DAOEmpleado insertEmpleado = new DAOEmpleado();
+        ControladorPrincipal controladorPrincipal = new ControladorPrincipal();
 
-        
-//FUNDACIONES
-
-//        Insertar Main
-//        Fundacion fundacion = new Fundacion("Las Criaturitas ", 35656872, "Popular", "criaturitas@gmail.com", "Proteger a las criaturas");
-//        insertFundacion.insertar(fundacion);
-
-//        Listar fundaciones
-//        List<Fundacion> listaFundacion = insertFundacion.Listar();
-//        for (Main fundacion : listaFundacion) {
-//            System.out.println(fundacion.toString());
+//        // Obtén la hora actual de la base de datos
+//        String horaActual = controladorPrincipal.obtenerHoraActual();
+//
+//        if (horaActual != null) {
+//            System.out.println("Hora actual de la base de datos: " + horaActual);
+//        } else {
+//            System.out.println("No se pudo obtener la hora actual de la base de datos.");
 //        }
-
-//        Editar fundaciones
-//        Main fundacion = new Main();
-//        fundacion.setIdFundacion(2);
-//        fundacion.setNombre("Hogar de Animalitos");
-//        fundacion.setTelefono(649321);
-//        fundacion.setDireccion("Villanueva");
-//        fundacion.setMision("Proteger y rescatar");
-//        fundacion.setCorreo_electronico("hogarAnimalitos@gmail.com");        
-//        insertFundacion.editar(fundacion);
-
-//        Buscar fundacion
-//        int idFundacion = 2;
-//        Main fundacionBuscar = new Main();
-//        fundacionBuscar.setIdFundacion(idFundacion);
-//        insertFundacion.buscar(fundacionBuscar);
-
-//        Eliminar fundacion
-//        int idFundacion = 8;
-//        Main fundacionEliminar = new Main();
-//        fundacionEliminar.setIdFundacion(idFundacion);
-//        insertFundacion.eliminar(fundacionEliminar);
-
-//EMPLEADOS
-
-//        Insertar empleados
-//        String nombreEmpleado = "Camilo";
-//        String cargoEmpleado = "Doctor";
-//        String funcionesEmpleado = "Gestión de proyectos";
-//        int idFundacion = 4 ;        
-//        Main fundacion = new Main(idFundacion);       
-//        insertEmpleado.insertarEmpleado(fundacion.agregarEmpleado(nombreEmpleado, cargoEmpleado, funcionesEmpleado, fundacion));
-
-////      Editar empleado
-//        int idEmpleado = 3;
 //        
-//        Empleado empleado = new Empleado();
-//        String nuevoNombre = "Nuevo Nombre";
-//        String nuevoCargo = "Nuevo Cargo";
-//        String nuevasFunciones = "Nuevas Funciones";
-//        Main fundacion = new Main();       
-//        fundacion.editarEmpleado(empleado, nuevoNombre, nuevoCargo, nuevasFunciones);
-
-
-
+//        // Crear una nueva Fundación
+//        DTOFundacion nuevaFundacion = new DTOFundacion(1, "Nombre Fundación", 123456789, "Dirección Fundación", "correo@fundacion.com", "Misión Fundación");
+//        controladorPrincipal.obtenerControladorFundacion().crearFundacion(nuevaFundacion);
+//        
+         // Obtener todas las Fundaciones y mostrarlas
+//        try {
+//            List<DTOFundacion> fundaciones = controladorPrincipal.obtenerControladorFundacion().obtenerTodasLasFundaciones();
+//            for (DTOFundacion fundacion : fundaciones) {
+//                System.out.println(fundacion.toString());
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        
+//        // Actualizar una Fundación existente
+//        DTOFundacion fundacionActualizada = new DTOFundacion(1, "Nuevo Nombre Fundación", 987654321, "Nueva Dirección Fundación", "nuevo@fundacion.com", "Nueva Misión Fundación");
+//        controladorPrincipal.obtenerControladorFundacion().actualizarFundacion(fundacionActualizada);
+//
+//        // Buscar una Fundación por ID
+//        DTOFundacion fundacionEncontrada = controladorPrincipal.obtenerControladorFundacion().buscarFundacion(1);
+//        if (fundacionEncontrada != null) {
+//            System.out.println(fundacionEncontrada.toString());
+//        } else {
+//            System.out.println("Fundación no encontrada.");
+//        }
+//        
+//        // Eliminar una Fundación por ID
+//        controladorPrincipal.obtenerControladorFundacion().eliminarFundacion(1);
+//        
+//        // Crea un nuevo empleado
+//        Empleado nuevoEmpleado = new Empleado();
+//        nuevoEmpleado.setNombre("Nombre del Empleado");
+//        nuevoEmpleado.setCargo("Cargo del Empleado");
+//        nuevoEmpleado.setFunciones("Funciones del Empleado");
+//
+//        // Llama al método del controlador para crear un empleado
+//        boolean exitoCreacion = controladorPrincipal.obtenerControladorEmpleado().crearEmpleado(nuevoEmpleado);
+//        if (exitoCreacion) {
+//            System.out.println("Empleado creado con éxito");
+//        } else {
+//            System.out.println("Error al crear el empleado");
+//        }
+//
+//        // Llama al método del controlador para obtener una lista de empleados
+//        try {
+//            List<Empleado> empleados = controladorPrincipal.obtenerControladorEmpleado().obtenerTodasLasEmpleado();
+//            for (Empleado empleado : empleados) {
+//                System.out.println("ID: " + empleado.getIdEmpleado());
+//                System.out.println("Nombre: " + empleado.getNombre());
+//                System.out.println("Cargo: " + empleado.getCargo());
+//                System.out.println("Funciones: " + empleado.getFunciones());
+//                System.out.println();
+//            }
+//        } catch (SQLException e) {
+//            System.out.println("Error al obtener la lista de empleados");
+//            e.printStackTrace();
+//        }
+//
+//        // Llama al método del controlador para buscar un empleado por ID
+//        int idEmpleadoABuscar = 1; // Reemplaza con el ID que desees buscar
+//        Empleado empleadoBuscado = controladorPrincipal.obtenerControladorEmpleado().buscarEmpleado(idEmpleadoABuscar);
+//        if (empleadoBuscado != null) {
+//            System.out.println("Empleado encontrado:");
+//            System.out.println("ID: " + empleadoBuscado.getIdEmpleado());
+//            System.out.println("Nombre: " + empleadoBuscado.getNombre());
+//            System.out.println("Cargo: " + empleadoBuscado.getCargo());
+//            System.out.println("Funciones: " + empleadoBuscado.getFunciones());
+//        } else {
+//            System.out.println("Empleado no encontrado");
+//        }
     }
 
 }

@@ -1,11 +1,10 @@
-
 package dominio;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Donante {
+
     private String nombre;
     private String direccion;
     private String telefono;
@@ -69,11 +68,11 @@ public class Donante {
     public void setPreferenciasDonacion(String preferenciasDonacion) {
         this.preferenciasDonacion = preferenciasDonacion;
     }
-    
+
     public void registrarDonacion(String donacion) {
         historialDonaciones.add(donacion);
     }
-    
+
     public void mostrarHistorialDonaciones() {
         System.out.println("Historial de Donaciones de " + nombre + ":");
         for (String donacion : historialDonaciones) {
@@ -81,4 +80,3 @@ public class Donante {
         }
     }
 }
-

@@ -4,7 +4,8 @@ import java.util.Map;
 import java.util.Date;
 
 public class CalculadoraSalario {
-    public static double calcularSalario(String cargo, Map<Date, Double> horario_registro){
+
+    public static double calcularSalario(String cargo, Map<Date, Double> horario_registro) {
         double salario = 0.0;
 
         if (cargo.equals("Veterinario")) {
@@ -17,7 +18,7 @@ public class CalculadoraSalario {
 
         return salario;
     }
-    
+
     private static double calcularHorasTrabajadas(Map<Date, Double> horario_registro) {
         double horas_trabajadas = 0.0;
 

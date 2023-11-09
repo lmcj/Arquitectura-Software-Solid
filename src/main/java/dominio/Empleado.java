@@ -16,13 +16,13 @@ public class Empleado {
     public Empleado() {
     }
 
-        public Empleado(String nombre, String cargo, String funciones) {
+    public Empleado(String nombre, String cargo, String funciones) {
         this.nombre = nombre;
         this.cargo = cargo;
         this.funciones = funciones;
         this.horario_registro = new HashMap<>();
     }
-    
+
     public Empleado(String nombre, String cargo, String funciones, Fundacion fundacion) {
         this.nombre = nombre;
         this.cargo = cargo;
@@ -31,7 +31,7 @@ public class Empleado {
         this.horario_registro = new HashMap<>();
     }
 
-        public Empleado(int idEmpleado,String nombre, String cargo, String funciones) {
+    public Empleado(int idEmpleado, String nombre, String cargo, String funciones) {
         this.idEmpleado = idEmpleado;
         this.nombre = nombre;
         this.cargo = cargo;
@@ -46,7 +46,7 @@ public class Empleado {
     public void setIdEmpleado(int idEmpleado) {
         this.idEmpleado = idEmpleado;
     }
-        
+
     public String getNombre() {
         return nombre;
     }

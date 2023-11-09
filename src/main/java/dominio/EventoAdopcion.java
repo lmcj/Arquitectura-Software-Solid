@@ -1,4 +1,3 @@
-  
 package dominio;
 
 import java.util.ArrayList;
@@ -6,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public class EventoAdopcion {
+
     private Date fecha;
     private String lugar;
     private String descripcion;
@@ -17,8 +17,6 @@ public class EventoAdopcion {
         this.descripcion = descripcion;
         this.mascotasDisponibles = new ArrayList<>();
     }
-
-
 
     public Date getFecha() {
         return fecha;
@@ -51,7 +49,7 @@ public class EventoAdopcion {
     public void setMascotasDisponibles(List<Mascota> mascotasDisponibles) {
         this.mascotasDisponibles = mascotasDisponibles;
     }
-    
+
     public void agregarMascota(Mascota mascota) {
         mascotasDisponibles.add(mascota);
     }

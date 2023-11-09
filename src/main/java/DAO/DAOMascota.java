@@ -2,11 +2,9 @@ package DAO;
 
 import InterfazDAO.IDAO_1;
 import InterfazDAO.IDAO_2;
-import conexiondb.DAOGenerico;
 import dominio.Fundacion;
 import dominio.Mascota;
 import gestorTransacciones.GestorTransacciones;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,24 +14,24 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import conexiondb.IConfiguracionBaseDatos;
 
-public class DAOMascota extends DAOGenerico implements IDAO_1<Mascota>, IDAO_2<Mascota>{
+public class DAOMascota implements IDAO_1<Mascota>, IDAO_2<Mascota> {
 
     private Connection conexion;
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
     private GestorTransacciones gestorTransacciones;
+    private final IConfiguracionBaseDatos iConfiguracionBaseDatos;
 
-    public DAOMascota(IConfiguracionBaseDatos configuracion) {
-        super(configuracion);
-        gestorTransacciones = new GestorTransacciones();
+    public DAOMascota(IConfiguracionBaseDatos iConfiguracionBaseDatos) {
+        this.iConfiguracionBaseDatos = iConfiguracionBaseDatos;
     }
 
     @Override
     public boolean insertar(Mascota mascota) {
-        String sql = "INSERT INTO mydb.mascotas (nombre, especie, raza, genero, edad, color, estado_salud, disponible, adoptante) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO mascotas (nombre, especie, raza, genero, edad, color, estado_salud, disponible, adoptante) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             gestorTransacciones.iniciarTransaccion(conexion);
 
             preparedStatement = conexion.prepareStatement(sql);
@@ -72,9 +70,9 @@ public class DAOMascota extends DAOGenerico implements IDAO_1<Mascota>, IDAO_2<M
     @Override
     public List<Mascota> listar() throws SQLException {
         List<Mascota> lista = new ArrayList<>();
-        String sql = "SELECT * FROM mydb.mascotas";
+        String sql = "SELECT * FROM mascotas";
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             preparedStatement = conexion.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -102,9 +100,9 @@ public class DAOMascota extends DAOGenerico implements IDAO_1<Mascota>, IDAO_2<M
     @Override
     public List<Mascota> listarSegunFundacion(Fundacion fundacion) {
         List<Mascota> lista = new ArrayList<>();
-        String sql = "SELECT * FROM mydb.mascotas WHERE Fundacion_idFundacion = ?";
+        String sql = "SELECT * FROM mascotas WHERE Fundacion_idFundacion = ?";
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             preparedStatement = conexion.prepareStatement(sql);
             preparedStatement.setInt(1, fundacion.getIdFundacion());
             resultSet = preparedStatement.executeQuery();
@@ -133,10 +131,10 @@ public class DAOMascota extends DAOGenerico implements IDAO_1<Mascota>, IDAO_2<M
 
     @Override
     public boolean editar(Mascota mascota) {
-        String sql = "UPDATE mydb.mascotas SET nombre = ?, especie = ?, raza = ?, genero = ?, edad = ?, color = ?, estado_salud = ?, disponible = ? WHERE idMascotas = ?";
+        String sql = "UPDATE mascotas SET nombre = ?, especie = ?, raza = ?, genero = ?, edad = ?, color = ?, estado_salud = ?, disponible = ? WHERE idMascotas = ?";
 
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             gestorTransacciones.iniciarTransaccion(conexion);
 
             preparedStatement = conexion.prepareStatement(sql);
@@ -174,9 +172,9 @@ public class DAOMascota extends DAOGenerico implements IDAO_1<Mascota>, IDAO_2<M
 
     @Override
     public Mascota buscar(Mascota mascota) {
-        String sql = "SELECT * FROM mydb.mascotas WHERE idMascotas = ?;";
+        String sql = "SELECT * FROM mascotas WHERE idMascotas = ?;";
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             preparedStatement = conexion.prepareStatement(sql);
             preparedStatement.setInt(1, mascota.getIdMascota());
             resultSet = preparedStatement.executeQuery();
@@ -203,10 +201,10 @@ public class DAOMascota extends DAOGenerico implements IDAO_1<Mascota>, IDAO_2<M
 
     @Override
     public boolean eliminar(Mascota mascota) {
-        String sql = "DELETE FROM mydb.mascotas WHERE idMascotas = ? AND Fundacion_idFundacion = ?";
+        String sql = "DELETE FROM mascotas WHERE idMascotas = ? AND Fundacion_idFundacion = ?";
 
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             gestorTransacciones.iniciarTransaccion(conexion);
 
             preparedStatement = conexion.prepareStatement(sql);

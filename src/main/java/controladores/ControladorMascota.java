@@ -1,49 +1,49 @@
 package controladores;
 
-import DAO.DAOMascota;
+import InterfazDAO.IDAO_1;
+import InterfazDAO.IDAO_2;
 import dominio.Fundacion;
 import dominio.Mascota;
-import conexiondb.IConfiguracionBaseDatos;
 import java.sql.SQLException;
 
 import java.util.List;
 
 public class ControladorMascota {
 
-    private DAOMascota daoMascota;
+    private IDAO_1<Mascota> controladorMascota;
+    private IDAO_2<Mascota> controladorMascota2;
 
-    public ControladorMascota(IConfiguracionBaseDatos configuracion) {
-        daoMascota = new DAOMascota(configuracion);
+    public ControladorMascota(IDAO_1<Mascota> controladorMascota, IDAO_2<Mascota> controladorMascota2) {
+        this.controladorMascota = controladorMascota;
+        this.controladorMascota2 = controladorMascota2;
     }
 
     public boolean crearMascota(Mascota mascota) {
-        // Lógica para crear una mascota (puede incluir validaciones)
-        return daoMascota.insertar(mascota);
+        return controladorMascota.insertar(mascota);
     }
 
-    public List<Mascota> obtenerTodasLasMascotas() throws SQLException {
-        return daoMascota.listar();
+    public List<Mascota> obtenerTodasLasMascota() throws SQLException {
+        return controladorMascota.listar();
     }
 
     public List<Mascota> obtenerMascotasSegunFundacion(Fundacion fundacion) {
-        return daoMascota.listarSegunFundacion(fundacion);
+        return controladorMascota2.listarSegunFundacion(fundacion);
     }
 
     public boolean actualizarMascota(Mascota mascota) {
-        // Lógica para actualizar una mascota (puede incluir validaciones)
-        return daoMascota.editar(mascota);
+        return controladorMascota.editar(mascota);
     }
 
     public Mascota buscarMascota(int id) {
         Mascota mascota = new Mascota();
         mascota.setIdMascota(id);
-        return daoMascota.buscar(mascota);
+        return controladorMascota.buscar(mascota);
     }
 
     public boolean eliminarMascota(int id, Fundacion fundacion) {
         Mascota mascota = new Mascota();
         mascota.setIdMascota(id);
         mascota.setFundacion(fundacion);
-        return daoMascota.eliminar(mascota);
+        return controladorMascota.eliminar(mascota);
     }
 }

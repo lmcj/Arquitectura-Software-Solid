@@ -1,6 +1,5 @@
 package DAO;
 
-import conexiondb.DAOGenerico;
 import dominio.Fundacion;
 import gestorTransacciones.GestorTransacciones;
 import java.sql.Connection;
@@ -13,24 +12,25 @@ import javax.swing.JOptionPane;
 import InterfazDAO.IDAO_1;
 import conexiondb.IConfiguracionBaseDatos;
 
-public class DAOFundacion extends DAOGenerico implements IDAO_1<Fundacion>{
-
+public class DAOFundacion implements IDAO_1<Fundacion> {
+    
     private Connection conexion;
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
     private GestorTransacciones gestorTransacciones;
+    private final IConfiguracionBaseDatos iConfiguracionBaseDatos;
 
-    public DAOFundacion(IConfiguracionBaseDatos configuracion) {
-        super(configuracion);
-        gestorTransacciones = new GestorTransacciones();
+    public DAOFundacion(IConfiguracionBaseDatos iConfiguracionBaseDatos) {
+        this.iConfiguracionBaseDatos = iConfiguracionBaseDatos;
+        this.gestorTransacciones = new GestorTransacciones();
     }
 
     @Override
     public boolean insertar(Fundacion fundacion) {
-        String sql = "INSERT INTO Fundacion (nombre, telefono, direccion, mision, correo_electronico) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO fundacion (nombre, telefono, direccion, mision, correo_electronico) VALUES (?, ?, ?, ?, ?)";
 
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             gestorTransacciones.iniciarTransaccion(conexion);
 
             preparedStatement = conexion.prepareStatement(sql);
@@ -64,9 +64,9 @@ public class DAOFundacion extends DAOGenerico implements IDAO_1<Fundacion>{
     @Override
     public List<Fundacion> listar() throws SQLException {
         List<Fundacion> lista = new ArrayList<>();
-        String sql = "SELECT * FROM mydb.fundacion";
+        String sql = "SELECT * FROM fundacion";
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             preparedStatement = conexion.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -90,11 +90,11 @@ public class DAOFundacion extends DAOGenerico implements IDAO_1<Fundacion>{
 
     @Override
     public boolean editar(Fundacion fundacion) {
-        String sql = "UPDATE Fundacion SET nombre=?,telefono=?,direccion=?, mision=?, correo_electronico=? WHERE idFundacion=? ";
+        String sql = "UPDATE fundacion SET nombre=?,telefono=?,direccion=?, mision=?, correo_electronico=? WHERE idfundacion=? ";
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             gestorTransacciones.iniciarTransaccion(conexion);
-            
+
             preparedStatement = conexion.prepareStatement(sql);
             preparedStatement.setInt(6, fundacion.getIdFundacion());
             preparedStatement.setString(1, fundacion.getNombre());
@@ -124,9 +124,9 @@ public class DAOFundacion extends DAOGenerico implements IDAO_1<Fundacion>{
 
     @Override
     public Fundacion buscar(Fundacion fundacion) {
-        String sql = "SELECT * FROM mydb.fundacion WHERE idFundacion=?; ";
+        String sql = "SELECT * FROM fundacion WHERE idFundacion=?; ";
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             preparedStatement = conexion.prepareStatement(sql);
             preparedStatement.setInt(1, fundacion.getIdFundacion());
             resultSet = preparedStatement.executeQuery();
@@ -138,7 +138,7 @@ public class DAOFundacion extends DAOGenerico implements IDAO_1<Fundacion>{
                 fundacion.setMision(resultSet.getString("mision"));
                 fundacion.setCorreo_electronico(resultSet.getString("correo_electronico"));
                 System.out.println(fundacion.toString());
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "NO SE LOGRA ENCONTRAR DATOS");
                 return null;
             }
@@ -153,12 +153,12 @@ public class DAOFundacion extends DAOGenerico implements IDAO_1<Fundacion>{
 
     @Override
     public boolean eliminar(Fundacion fundacion) {
-        String sql = "DELETE FROM mydb.fundacion WHERE idFundacion=?";
+        String sql = "DELETE FROM fundacion WHERE idFundacion=?";
 
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             gestorTransacciones.iniciarTransaccion(conexion);
-            
+
             preparedStatement = conexion.prepareStatement(sql);
             preparedStatement.setInt(1, fundacion.getIdFundacion());
             int n = preparedStatement.executeUpdate();

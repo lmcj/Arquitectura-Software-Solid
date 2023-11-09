@@ -1,9 +1,10 @@
-
 package conexiondb;
 
+import java.sql.Connection;
+
 public interface IConfiguracionBaseDatos {
-    
-    String obtenerURL();
-    String obtenerUsuario();
-    String obtenerContrasena();
+
+    Connection obtenerConexion();
+
+    void desconectar();
 }

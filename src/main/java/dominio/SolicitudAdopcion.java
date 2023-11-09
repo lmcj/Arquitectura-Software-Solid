@@ -1,6 +1,7 @@
 package dominio;
 
 public class SolicitudAdopcion {
+
     private Adoptante adoptante;
     private MascotaAdoptada mascotaAdoptada;
     private String estado;

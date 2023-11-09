@@ -1,18 +1,34 @@
-C:\Users\Casallas\Documents\Arquitectura de Software\Fundacion\src\main\java\com\mycompany\fundacion\Main.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Fundacion\src\main\java\dominio\Empleado.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Fundacion\src\main\java\DAO\DAOEmpleado.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Fundacion\src\main\java\DAO\DAOFundacion.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Fundacion\src\main\java\dominio\Donante.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Fundacion\src\main\java\dominio\MascotaAdoptada.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Fundacion\src\main\java\DAO\DAOMascota.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Fundacion\src\main\java\conexiondb\ConfiguracionBaseDatos.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Fundacion\src\main\java\dominio\Adoptante.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Fundacion\src\main\java\conexiondb\ConfiguracionMySQL.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Fundacion\src\main\java\DAO\DAOVoluntario.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Fundacion\src\main\java\dominio\Voluntario.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Fundacion\src\main\java\dominio\EventoAdopcion.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Fundacion\src\main\java\dominio\Mascota.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Fundacion\src\main\java\dominio\SolicitudAdopcion.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Fundacion\src\main\java\dominio\CalculadoraSalario.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Fundacion\src\main\java\conexiondb\DAOGenerico.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Fundacion\src\main\java\dominio\Fundacion.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\controladores\ControladorVoluntario.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\controladores\ControladorPrincipal.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\CalculadoraSalario.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\conexiondb\AdminDB.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\conexiondb\ConexionFactory.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\GestorEmpleados.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\HoraActual\HoraActualMySQL.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\controladores\ControladorEmpleado.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\DTO\DTOFundacion.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\DAO\DAOMascota.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\SolicitudAdopcion.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\controladores\ControladorFundacion.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\DAO\DAOEmpleado.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\Adoptante.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\Fundacion.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\DAO\DAOFundacion.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\Donante.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\MascotaAdoptada.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\GestorVoluntarios.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\HoraActual\HoraActualDAO.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\InterfazDAO\IDAO_2.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\EventoAdopcion.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\InterfazDAO\IDAO_1.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\Voluntario.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\GestorMascotas.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\HoraActual\HoraActualPostgreSQL.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\ConversionDTO\FundacionConverter.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\com\mycompany\fundacion\Main.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\controladores\ControladorMascota.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\Empleado.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\conexiondb\IConfiguracionBaseDatos.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\Mascota.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\gestorTransacciones\GestorTransacciones.java
+C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\DAO\DAOVoluntario.java

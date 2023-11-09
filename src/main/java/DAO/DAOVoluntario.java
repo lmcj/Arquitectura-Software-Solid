@@ -2,11 +2,9 @@ package DAO;
 
 import InterfazDAO.IDAO_1;
 import InterfazDAO.IDAO_2;
-import conexiondb.DAOGenerico;
 import dominio.Fundacion;
 import dominio.Voluntario;
 import gestorTransacciones.GestorTransacciones;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,26 +13,25 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import conexiondb.IConfiguracionBaseDatos;
-import dominio.Empleado;
 
-public class DAOVoluntario extends DAOGenerico implements IDAO_1<Voluntario>,IDAO_2<Voluntario>{
+public class DAOVoluntario implements IDAO_1<Voluntario>, IDAO_2<Voluntario> {
 
     private Connection conexion;
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
     private GestorTransacciones gestorTransacciones;
+    private final IConfiguracionBaseDatos iConfiguracionBaseDatos;
 
-    public DAOVoluntario(IConfiguracionBaseDatos configuracion) {
-        super(configuracion);
-        gestorTransacciones = new GestorTransacciones();
+    public DAOVoluntario(IConfiguracionBaseDatos iConfiguracionBaseDatos) {
+        this.iConfiguracionBaseDatos = iConfiguracionBaseDatos;
     }
 
     @Override
     public boolean insertar(Voluntario voluntario) {
-        String sql = "INSERT INTO mydb.voluntarios (nombre, telefono, correo_electronico, habilidades, disponibilidad, Fundacion_idFundacion) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO voluntarios (nombre, telefono, correo_electronico, habilidades, disponibilidad, Fundacion_idFundacion) VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             gestorTransacciones.iniciarTransaccion(conexion);
 
             preparedStatement = conexion.prepareStatement(sql);
@@ -70,9 +67,9 @@ public class DAOVoluntario extends DAOGenerico implements IDAO_1<Voluntario>,IDA
     @Override
     public List<Voluntario> listar() throws SQLException {
         List<Voluntario> lista = new ArrayList<>();
-        String sql = "SELECT * FROM mydb.voluntarios";
+        String sql = "SELECT * FROM voluntarios";
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             preparedStatement = conexion.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -98,9 +95,9 @@ public class DAOVoluntario extends DAOGenerico implements IDAO_1<Voluntario>,IDA
     @Override
     public List<Voluntario> listarSegunFundacion(Fundacion fundacion) {
         List<Voluntario> lista = new ArrayList<>();
-        String sql = "SELECT * FROM mydb.voluntarios WHERE Fundacion_idFundacion = ?";
+        String sql = "SELECT * FROM voluntarios WHERE Fundacion_idFundacion = ?";
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             preparedStatement = conexion.prepareStatement(sql);
             preparedStatement.setInt(1, fundacion.getIdFundacion());
             resultSet = preparedStatement.executeQuery();
@@ -127,9 +124,9 @@ public class DAOVoluntario extends DAOGenerico implements IDAO_1<Voluntario>,IDA
 
     @Override
     public boolean editar(Voluntario voluntario) {
-        String sql = "UPDATE mydb.voluntarios SET nombre=?, telefono=?, correo_electronico=?, habilidades=?, disponibilidad=? WHERE idVoluntarios=?";
+        String sql = "UPDATE voluntarios SET nombre=?, telefono=?, correo_electronico=?, habilidades=?, disponibilidad=? WHERE idVoluntarios=?";
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             gestorTransacciones.iniciarTransaccion(conexion);
 
             preparedStatement = conexion.prepareStatement(sql);
@@ -163,9 +160,9 @@ public class DAOVoluntario extends DAOGenerico implements IDAO_1<Voluntario>,IDA
 
     @Override
     public Voluntario buscar(Voluntario voluntario) {
-        String sql = "SELECT * FROM mydb.voluntarios WHERE idVoluntarios=?; ";
+        String sql = "SELECT * FROM voluntarios WHERE idVoluntarios=?; ";
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             preparedStatement = conexion.prepareStatement(sql);
             preparedStatement.setInt(1, voluntario.getIdVoluntario());
             resultSet = preparedStatement.executeQuery();
@@ -189,9 +186,9 @@ public class DAOVoluntario extends DAOGenerico implements IDAO_1<Voluntario>,IDA
 
     @Override
     public boolean eliminar(Voluntario voluntario) {
-        String sql = "DELETE FROM mydb.voluntarios WHERE idVoluntarios= ? AND Fundacion_idFundacion = ?";
+        String sql = "DELETE FROM voluntarios WHERE idVoluntarios= ? AND Fundacion_idFundacion = ?";
         try {
-            conexion = obtenerConexion();
+            conexion = iConfiguracionBaseDatos.obtenerConexion();
             gestorTransacciones.iniciarTransaccion(conexion);
 
             preparedStatement = conexion.prepareStatement(sql);

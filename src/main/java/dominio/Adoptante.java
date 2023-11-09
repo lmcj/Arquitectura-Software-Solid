@@ -1,8 +1,7 @@
-
 package dominio;
 
 public class Adoptante {
-    
+
     private String nombre;
     private String telefono;
     private String correo_electronico;
@@ -11,8 +10,8 @@ public class Adoptante {
     private String direccion;
     private MascotaAdoptada mascotaAdoptada;
 
-    public Adoptante(String nombre, String telefono, String correo_electronico, String preferencia_mascota, 
-            String direccion){
+    public Adoptante(String nombre, String telefono, String correo_electronico, String preferencia_mascota,
+            String direccion) {
         this.nombre = nombre;
         this.telefono = telefono;
         this.correo_electronico = correo_electronico;
