@@ -1,5 +1,7 @@
 package DAO;
 
+import DTO.DTOEmpleado;
+import DTO.DTOFundacion;
 import dominio.Empleado;
 import dominio.Fundacion;
 import gestorTransacciones.GestorTransacciones;
@@ -14,7 +16,7 @@ import InterfazDAO.IDAO_1;
 import InterfazDAO.IDAO_2;
 import conexiondb.IConfiguracionBaseDatos;
 
-public class DAOEmpleado implements IDAO_1<Empleado>, IDAO_2<Empleado> {
+public class DAOEmpleado implements IDAO_1<DTOEmpleado>, IDAO_2<DTOEmpleado>{
 
     private Connection conexion;
     private PreparedStatement preparedStatement;
@@ -24,11 +26,12 @@ public class DAOEmpleado implements IDAO_1<Empleado>, IDAO_2<Empleado> {
 
     public DAOEmpleado(IConfiguracionBaseDatos iConfiguracionBaseDatos) {
         this.iConfiguracionBaseDatos = iConfiguracionBaseDatos;
+        this.gestorTransacciones = new GestorTransacciones(); 
     }
 
     @Override
-    public boolean insertar(Empleado empleado) {
-        String sql = "INSERT INTO empleados (nombre, cargo, funciones, Fundacion_idFundacion) VALUES (?, ?, ?, ?)";
+    public boolean insertar(DTOEmpleado empleado) {
+        String sql = "INSERT INTO empleados (nombre, cargo, funciones, fk_idFundacion) VALUES (?, ?, ?, ?)";
 
         try {
             conexion = iConfiguracionBaseDatos.obtenerConexion();
@@ -63,15 +66,15 @@ public class DAOEmpleado implements IDAO_1<Empleado>, IDAO_2<Empleado> {
     }
 
     @Override
-    public List<Empleado> listar() throws SQLException {
-        List<Empleado> lista = new ArrayList<>();
+    public List<DTOEmpleado> listar() throws SQLException {
+        List<DTOEmpleado> lista = new ArrayList<>();
         String sql = "SELECT * FROM empleados";
         try {
             conexion = iConfiguracionBaseDatos.obtenerConexion();
             preparedStatement = conexion.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Empleado empleado = new Empleado();
+                DTOEmpleado empleado = new DTOEmpleado();
                 empleado.setIdEmpleado(resultSet.getInt("idEmpleados"));
                 empleado.setNombre(resultSet.getString("nombre"));
                 empleado.setCargo(resultSet.getString("cargo"));
@@ -88,8 +91,8 @@ public class DAOEmpleado implements IDAO_1<Empleado>, IDAO_2<Empleado> {
     }
 
     @Override
-    public List<Empleado> listarSegunFundacion(Fundacion fundacion) {
-        List<Empleado> lista = new ArrayList<>();
+    public List<DTOEmpleado> listarSegunFundacion(DTOFundacion fundacion) {
+        List<DTOEmpleado> lista = new ArrayList<>();
         String sql = "SELECT * FROM empleados WHERE Fundacion_idFundacion = ?";
         try {
             conexion = iConfiguracionBaseDatos.obtenerConexion();
@@ -97,7 +100,7 @@ public class DAOEmpleado implements IDAO_1<Empleado>, IDAO_2<Empleado> {
             preparedStatement.setInt(1, fundacion.getIdFundacion());
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Empleado empleado = new Empleado();
+                DTOEmpleado empleado = new DTOEmpleado();
                 empleado.setIdEmpleado(resultSet.getInt("idEmpleados"));
                 empleado.setNombre(resultSet.getString("nombre"));
                 empleado.setCargo(resultSet.getString("cargo"));
@@ -115,7 +118,7 @@ public class DAOEmpleado implements IDAO_1<Empleado>, IDAO_2<Empleado> {
     }
 
     @Override
-    public boolean editar(Empleado empleado) {
+    public boolean editar(DTOEmpleado empleado) {
         String sql = "UPDATE empleados SET nombre=?, cargo=?, funciones=? WHERE idEmpleados=?";
 
         try {
@@ -151,7 +154,7 @@ public class DAOEmpleado implements IDAO_1<Empleado>, IDAO_2<Empleado> {
     }
 
     @Override
-    public Empleado buscar(Empleado empleado) {
+    public DTOEmpleado buscar(DTOEmpleado empleado) {
         String sql = "SELECT * FROM empleados WHERE idEmpleado=?; ";
         try {
             conexion = iConfiguracionBaseDatos.obtenerConexion();
@@ -175,7 +178,7 @@ public class DAOEmpleado implements IDAO_1<Empleado>, IDAO_2<Empleado> {
     }
 
     @Override
-    public boolean eliminar(Empleado empleado) {
+    public boolean eliminar(DTOEmpleado empleado) {
         String sql = "DELETE FROM empleados WHERE idEmpleados = ? AND Fundacion_idFundacion = ?";
 
         try {

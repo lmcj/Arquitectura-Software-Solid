@@ -1,5 +1,7 @@
 package DAO;
 
+import DTO.DTOFundacion;
+import DTO.DTOMascota;
 import InterfazDAO.IDAO_1;
 import InterfazDAO.IDAO_2;
 import dominio.Fundacion;
@@ -14,7 +16,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import conexiondb.IConfiguracionBaseDatos;
 
-public class DAOMascota implements IDAO_1<Mascota>, IDAO_2<Mascota> {
+public class DAOMascota implements IDAO_1<DTOMascota>, IDAO_2<DTOMascota> {
 
     private Connection conexion;
     private PreparedStatement preparedStatement;
@@ -27,7 +29,7 @@ public class DAOMascota implements IDAO_1<Mascota>, IDAO_2<Mascota> {
     }
 
     @Override
-    public boolean insertar(Mascota mascota) {
+    public boolean insertar(DTOMascota mascota) {
         String sql = "INSERT INTO mascotas (nombre, especie, raza, genero, edad, color, estado_salud, disponible, adoptante) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
@@ -41,7 +43,7 @@ public class DAOMascota implements IDAO_1<Mascota>, IDAO_2<Mascota> {
             preparedStatement.setString(4, mascota.getGenero());
             preparedStatement.setInt(5, mascota.getEdad());
             preparedStatement.setString(6, mascota.getColor());
-            preparedStatement.setString(7, mascota.getEstado_salud());
+            preparedStatement.setString(7, mascota.getEstadoSalud());
             preparedStatement.setBoolean(8, mascota.getDisponible());
             preparedStatement.setInt(9, mascota.getFundacion().getIdFundacion());
 
@@ -68,15 +70,15 @@ public class DAOMascota implements IDAO_1<Mascota>, IDAO_2<Mascota> {
     }
 
     @Override
-    public List<Mascota> listar() throws SQLException {
-        List<Mascota> lista = new ArrayList<>();
+    public List<DTOMascota> listar() throws SQLException {
+        List<DTOMascota> lista = new ArrayList<>();
         String sql = "SELECT * FROM mascotas";
         try {
             conexion = iConfiguracionBaseDatos.obtenerConexion();
             preparedStatement = conexion.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Mascota m = new Mascota();
+                DTOMascota m = new DTOMascota();
                 m.setIdMascota(resultSet.getInt("idMascotas"));
                 m.setNombre(resultSet.getString("nombre"));
                 m.setEspecie(resultSet.getString("especie"));
@@ -84,7 +86,7 @@ public class DAOMascota implements IDAO_1<Mascota>, IDAO_2<Mascota> {
                 m.setGenero(resultSet.getString("genero"));
                 m.setEdad(resultSet.getInt("edad"));
                 m.setColor(resultSet.getString("color"));
-                m.setEstado_salud(resultSet.getString("estado_salud"));
+                m.setEstadoSalud(resultSet.getString("estado_salud"));
                 m.setDisponible(resultSet.getBoolean("disponible"));
                 lista.add(m);
             }
@@ -98,8 +100,8 @@ public class DAOMascota implements IDAO_1<Mascota>, IDAO_2<Mascota> {
     }
 
     @Override
-    public List<Mascota> listarSegunFundacion(Fundacion fundacion) {
-        List<Mascota> lista = new ArrayList<>();
+    public List<DTOMascota> listarSegunFundacion(DTOFundacion fundacion) {
+        List<DTOMascota> lista = new ArrayList<>();
         String sql = "SELECT * FROM mascotas WHERE Fundacion_idFundacion = ?";
         try {
             conexion = iConfiguracionBaseDatos.obtenerConexion();
@@ -107,7 +109,7 @@ public class DAOMascota implements IDAO_1<Mascota>, IDAO_2<Mascota> {
             preparedStatement.setInt(1, fundacion.getIdFundacion());
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Mascota mascota = new Mascota();
+                DTOMascota mascota = new DTOMascota();
                 mascota.setIdMascota(resultSet.getInt("idMascotas"));
                 mascota.setNombre(resultSet.getString("nombre"));
                 mascota.setEspecie(resultSet.getString("especie"));
@@ -115,7 +117,7 @@ public class DAOMascota implements IDAO_1<Mascota>, IDAO_2<Mascota> {
                 mascota.setGenero(resultSet.getString("genero"));
                 mascota.setEdad(resultSet.getInt("edad"));
                 mascota.setColor(resultSet.getString("color"));
-                mascota.setEstado_salud(resultSet.getString("estado_salud"));
+                mascota.setEstadoSalud(resultSet.getString("estado_salud"));
                 mascota.setDisponible(resultSet.getBoolean("disponible"));
                 mascota.setFundacion(fundacion);
                 lista.add(mascota);
@@ -130,7 +132,7 @@ public class DAOMascota implements IDAO_1<Mascota>, IDAO_2<Mascota> {
     }
 
     @Override
-    public boolean editar(Mascota mascota) {
+    public boolean editar(DTOMascota mascota) {
         String sql = "UPDATE mascotas SET nombre = ?, especie = ?, raza = ?, genero = ?, edad = ?, color = ?, estado_salud = ?, disponible = ? WHERE idMascotas = ?";
 
         try {
@@ -144,7 +146,7 @@ public class DAOMascota implements IDAO_1<Mascota>, IDAO_2<Mascota> {
             preparedStatement.setString(4, mascota.getGenero());
             preparedStatement.setInt(5, mascota.getEdad());
             preparedStatement.setString(6, mascota.getColor());
-            preparedStatement.setString(7, mascota.getEstado_salud());
+            preparedStatement.setString(7, mascota.getEstadoSalud());
             preparedStatement.setBoolean(8, mascota.getDisponible());
             preparedStatement.setInt(9, mascota.getIdMascota());
 
@@ -171,7 +173,7 @@ public class DAOMascota implements IDAO_1<Mascota>, IDAO_2<Mascota> {
     }
 
     @Override
-    public Mascota buscar(Mascota mascota) {
+    public DTOMascota buscar(DTOMascota mascota) {
         String sql = "SELECT * FROM mascotas WHERE idMascotas = ?;";
         try {
             conexion = iConfiguracionBaseDatos.obtenerConexion();
@@ -186,7 +188,7 @@ public class DAOMascota implements IDAO_1<Mascota>, IDAO_2<Mascota> {
                 mascota.setGenero(resultSet.getString("genero"));
                 mascota.setEdad(resultSet.getInt("edad"));
                 mascota.setColor(resultSet.getString("color"));
-                mascota.setEstado_salud(resultSet.getString("estado_salud"));
+                mascota.setEstadoSalud(resultSet.getString("estado_salud"));
                 mascota.setDisponible(resultSet.getBoolean("disponible"));
             }
         } catch (SQLException e) {
@@ -200,7 +202,7 @@ public class DAOMascota implements IDAO_1<Mascota>, IDAO_2<Mascota> {
     }
 
     @Override
-    public boolean eliminar(Mascota mascota) {
+    public boolean eliminar(DTOMascota mascota) {
         String sql = "DELETE FROM mascotas WHERE idMascotas = ? AND Fundacion_idFundacion = ?";
 
         try {

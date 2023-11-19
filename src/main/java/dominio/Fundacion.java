@@ -8,9 +8,7 @@ public class Fundacion {
     private String direccion;
     private String correo_electronico;
     private String mision;
-    private GestorEmpleados gestorEmpleados;
-    private GestorVoluntarios gestorVoluntarios; 
-    private GestorMascotas gestorMascotas;
+    
 
     public Fundacion() {  
     }
@@ -84,57 +82,4 @@ public class Fundacion {
         this.mision = mision;
     }
 
-    public Empleado agregarEmpleado(String nombre, String cargo, String funciones, Fundacion fun) {
-     return gestorEmpleados.agregarEmpleado(nombre, cargo, funciones, fun);
-    }
-
-    public void mostrarEmpleados() {
-        gestorEmpleados.mostrarEmpleados(this);
-    }
-
-    public boolean editarEmpleado(Empleado empleado, String nuevoNombre, String nuevoCargo, String nuevasFunciones) {
-        return gestorEmpleados.editarEmpleado(empleado, nuevoNombre, nuevoCargo, nuevasFunciones);
-    }
-
-    //eliminar empleado
-    public void eliminarEmpleado(String nombre) {
-        gestorEmpleados.eliminarEmpleado(nombre);
-    }
-
-    public Voluntario agregarVoluntario(String nombre, String direccion, String correo_electronico, String habilidades, String disponibilidad, int telefono) {
-        return gestorVoluntarios.agregarVoluntario(nombre, direccion, correo_electronico, habilidades, disponibilidad, telefono);
-    }
-
-    public void mostrarVoluntarios() {
-        gestorVoluntarios.mostrarVoluntarios(this);
-    }
-
-    //eliminar voluntario
-    public void eliminarVoluntario(String nombre) {
-        gestorVoluntarios.eliminarVoluntario(nombre);
-    }
-
-    public Mascota agregarMascota(String nombre, String especie, String raza, String genero, int edad, String color, String estado_salud) {
-        return gestorMascotas.agregarMascota(nombre, especie, raza, genero, edad, color, estado_salud);
-    }
-
-    public void mostrarMascotas() {
-        gestorMascotas.mostrarMascotas(this);
-    }
-
-    //eliminar mascota
-    public void eliminarMascota(String nombre) {
-       gestorMascotas.eliminarMascota(nombre);  
-    }
-
-    @Override
-    public String toString() {
-        return "Fundacion {"
-                + " Id Fundacion ='" + getIdFundacion() + '\''
-                + ", Nombre ='" + getNombre() + '\''
-                + ", Telefono ='" + getTelefono() + '\''
-                + ", Direccion='" + getDireccion() + '\''
-                + ", Mision=" + getMision()
-                + ", Correo Electronico=" + getCorreo_electronico() + '}';
-    }
 }

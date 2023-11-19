@@ -1,5 +1,6 @@
 package controladores;
 
+import DTO.DTOFundacion;
 import InterfazDAO.IDAO_1;
 import InterfazDAO.IDAO_2;
 import dominio.Fundacion;
@@ -26,7 +27,7 @@ public class ControladorMascota {
         return controladorMascota.listar();
     }
 
-    public List<Mascota> obtenerMascotasSegunFundacion(Fundacion fundacion) {
+    public List<Mascota> obtenerMascotasSegunFundacion(DTOFundacion fundacion) {
         return controladorMascota2.listarSegunFundacion(fundacion);
     }
 
@@ -40,7 +41,7 @@ public class ControladorMascota {
         return controladorMascota.buscar(mascota);
     }
 
-    public boolean eliminarMascota(int id, Fundacion fundacion) {
+    public boolean eliminarMascota(int id, DTOFundacion fundacion) {
         Mascota mascota = new Mascota();
         mascota.setIdMascota(id);
         mascota.setFundacion(fundacion);

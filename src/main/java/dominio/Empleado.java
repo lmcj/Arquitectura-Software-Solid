@@ -1,5 +1,6 @@
 package dominio;
 
+import DTO.DTOFundacion;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +11,7 @@ public class Empleado {
     private String nombre;
     private String cargo;
     private String funciones;
-    private Fundacion fundacion;
+    private DTOFundacion fundacion;
     private Map<Date, Double> horario_registro; //horas diarias de trabajo
 
     public Empleado() {
@@ -23,7 +24,7 @@ public class Empleado {
         this.horario_registro = new HashMap<>();
     }
 
-    public Empleado(String nombre, String cargo, String funciones, Fundacion fundacion) {
+    public Empleado(String nombre, String cargo, String funciones, DTOFundacion fundacion) {
         this.nombre = nombre;
         this.cargo = cargo;
         this.funciones = funciones;
@@ -75,11 +76,11 @@ public class Empleado {
         this.horario_registro = horario_registro;
     }
 
-    public Fundacion getFundacion() {
+    public DTOFundacion getFundacion() {
         return fundacion;
     }
 
-    public void setFundacion(Fundacion fundacion) {
+    public void setFundacion(DTOFundacion fundacion) {
         this.fundacion = fundacion;
     }
 

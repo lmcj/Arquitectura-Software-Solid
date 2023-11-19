@@ -10,6 +10,7 @@ import InterfazDAO.IDAO_2;
 import conexiondb.AdminDB;
 import conexiondb.ConexionFactory;
 import conexiondb.IConfiguracionBaseDatos;
+import dominio.Fundacion;
 
 public class ControladorPrincipal {
 
@@ -30,7 +31,7 @@ public class ControladorPrincipal {
     private ControladorVoluntario controladorVoluntario;
 
     public ControladorPrincipal() {
-        this.controladorFundacion = new ControladorFundacion(iDAO_1Fundacion);
+        this.controladorFundacion = new ControladorFundacion(iDAO_1Fundacion, (IDAO_1<Fundacion>) iDAO_2Empleado);
         this.controladorEmpleado = new ControladorEmpleado(iDAO_1Empleado, iDAO_2Empleado);
         this.controladorMascota = new ControladorMascota(iDAO_1Mascota, iDAO_2Mascota);
         this.controladorVoluntario = new ControladorVoluntario(iDAO_1Voluntario, iDAO_2Voluntario);

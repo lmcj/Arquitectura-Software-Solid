@@ -1,34 +1,42 @@
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\controladores\ControladorVoluntario.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\controladores\ControladorPrincipal.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\CalculadoraSalario.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\conexiondb\AdminDB.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\conexiondb\ConexionFactory.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\GestorEmpleados.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\HoraActual\HoraActualMySQL.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\controladores\ControladorEmpleado.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\DTO\DTOFundacion.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\DAO\DAOMascota.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\SolicitudAdopcion.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\controladores\ControladorFundacion.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\DAO\DAOEmpleado.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\Adoptante.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\Fundacion.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\DAO\DAOFundacion.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\Donante.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\MascotaAdoptada.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\GestorVoluntarios.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\HoraActual\HoraActualDAO.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\InterfazDAO\IDAO_2.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\EventoAdopcion.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\InterfazDAO\IDAO_1.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\Voluntario.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\GestorMascotas.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\HoraActual\HoraActualPostgreSQL.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\ConversionDTO\FundacionConverter.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\com\mycompany\fundacion\Main.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\controladores\ControladorMascota.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\Empleado.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\conexiondb\IConfiguracionBaseDatos.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\dominio\Mascota.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\gestorTransacciones\GestorTransacciones.java
-C:\Users\Casallas\Documents\Arquitectura de Software\Patrones de diseño de software (1)\Fundacion\src\main\java\DAO\DAOVoluntario.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\gestorTransacciones\GestorTransacciones.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\controladores\ControladorEmpleado.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\templateCalcularSalario\SecretariaCalcular.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\dominio\EventoAdopcion.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\templateCalcularSalario\AuxiliarCalcular.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\templateProcesoDonar\ProcesoDonancionDirecta.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\dominio\GestorEmpleados.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\controladores\ControladorPrincipal.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\dominio\GestorVoluntarios.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\DTO\DTOFundacion.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\conexiondb\ConexionFactory.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\ConversionDTO\FundacionConverter.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\HoraActual\HoraActualPostgreSQL.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\dominio\Adoptante.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\com\mycompany\fundacion\Main.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\dominio\MascotaAdoptada.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\templateProcesoDonar\ProcesoDonarTemplate.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\DAO\DAOFundacion.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\templateProcesoDonar\ProcesoDonacionEvento.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\conexiondb\IConfiguracionBaseDatos.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\HoraActual\HoraActualDAO.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\HoraActual\HoraActualMySQL.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\dominio\Mascota.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\InterfazDAO\IDAO_2.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\templateSolicitudAdopcion\SolicitudAdopcionTemplate.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\templateSolicitudAdopcion\SolicitudAdopcionDirecta.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\templateCalcularSalario\CalculadoraSalarioTemplate.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\dominio\Donante.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\conexiondb\AdminDB.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\DAO\DAOEmpleado.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\controladores\ControladorMascota.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\controladores\ControladorFundacion.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\DAO\DAOVoluntario.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\DAO\DAOMascota.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\dominio\Voluntario.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\controladores\ControladorVoluntario.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\InterfazDAO\IDAO_1.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\templateCalcularSalario\VeterinarioCalcular.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\templateSolicitudAdopcion\SolicitudAdopcionEvento.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\dominio\GestorMascotas.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\dominio\Empleado.java
+C:\Users\57322\Desktop\Taller - Patrones de diseño de software (2)\Taller - Patrones de diseño de software (2)\Fundacion\src\main\java\dominio\Fundacion.java

@@ -1,5 +1,6 @@
 package dominio;
 
+import DTO.DTOFundacion;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +18,7 @@ public class Voluntario {
     private int telefono;
     private Map<Date, Double> horas_registro;
     private List<String> historialInformes;
-    private Fundacion fundacion;
+    private DTOFundacion fundacion;
 
     public Voluntario() {
     }
@@ -43,7 +44,7 @@ public class Voluntario {
         this.telefono = telefono;
     }
 
-    public Voluntario(String nombre, String direccion, String correo_electronico, String habilidades, String disponibilidad, int telefono, Fundacion fundacion) {
+    public Voluntario(String nombre, String direccion, String correo_electronico, String habilidades, String disponibilidad, int telefono, DTOFundacion fundacion) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.correo_electronico = correo_electronico;
@@ -91,7 +92,7 @@ public class Voluntario {
         return horas_registro;
     }
 
-    public Fundacion getFundacion() {
+    public DTOFundacion getFundacion() {
         return fundacion;
     }
 
@@ -119,7 +120,7 @@ public class Voluntario {
         this.telefono = telefono;
     }
 
-    public void setFundacion(Fundacion fundacion) {
+    public void setFundacion(DTOFundacion fundacion) {
         this.fundacion = fundacion;
     }
 

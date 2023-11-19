@@ -1,5 +1,6 @@
 package DAO;
 
+import DTO.DTOFundacion;
 import dominio.Fundacion;
 import gestorTransacciones.GestorTransacciones;
 import java.sql.Connection;
@@ -12,7 +13,7 @@ import javax.swing.JOptionPane;
 import InterfazDAO.IDAO_1;
 import conexiondb.IConfiguracionBaseDatos;
 
-public class DAOFundacion implements IDAO_1<Fundacion> {
+public class DAOFundacion implements IDAO_1<DTOFundacion> {
     
     private Connection conexion;
     private PreparedStatement preparedStatement;
@@ -26,7 +27,7 @@ public class DAOFundacion implements IDAO_1<Fundacion> {
     }
 
     @Override
-    public boolean insertar(Fundacion fundacion) {
+    public boolean insertar(DTOFundacion fundacion) {
         String sql = "INSERT INTO fundacion (nombre, telefono, direccion, mision, correo_electronico) VALUES (?, ?, ?, ?, ?)";
 
         try {
@@ -62,15 +63,15 @@ public class DAOFundacion implements IDAO_1<Fundacion> {
     }
 
     @Override
-    public List<Fundacion> listar() throws SQLException {
-        List<Fundacion> lista = new ArrayList<>();
+    public List<DTOFundacion> listar() throws SQLException {
+        List<DTOFundacion> lista = new ArrayList<>();
         String sql = "SELECT * FROM fundacion";
         try {
             conexion = iConfiguracionBaseDatos.obtenerConexion();
             preparedStatement = conexion.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Fundacion fundacion = new Fundacion();
+                DTOFundacion fundacion = new DTOFundacion();
                 fundacion.setIdFundacion(resultSet.getInt("idFundacion"));
                 fundacion.setNombre(resultSet.getString("nombre"));
                 fundacion.setTelefono(resultSet.getInt("telefono"));
@@ -89,7 +90,7 @@ public class DAOFundacion implements IDAO_1<Fundacion> {
     }
 
     @Override
-    public boolean editar(Fundacion fundacion) {
+    public boolean editar(DTOFundacion fundacion) {
         String sql = "UPDATE fundacion SET nombre=?,telefono=?,direccion=?, mision=?, correo_electronico=? WHERE idfundacion=? ";
         try {
             conexion = iConfiguracionBaseDatos.obtenerConexion();
@@ -123,7 +124,7 @@ public class DAOFundacion implements IDAO_1<Fundacion> {
     }
 
     @Override
-    public Fundacion buscar(Fundacion fundacion) {
+    public DTOFundacion buscar(DTOFundacion fundacion) {
         String sql = "SELECT * FROM fundacion WHERE idFundacion=?; ";
         try {
             conexion = iConfiguracionBaseDatos.obtenerConexion();
@@ -152,7 +153,7 @@ public class DAOFundacion implements IDAO_1<Fundacion> {
     }
 
     @Override
-    public boolean eliminar(Fundacion fundacion) {
+    public boolean eliminar(DTOFundacion fundacion) {
         String sql = "DELETE FROM fundacion WHERE idFundacion=?";
 
         try {

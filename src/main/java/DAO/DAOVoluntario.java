@@ -1,5 +1,7 @@
 package DAO;
 
+import DTO.DTOFundacion;
+import DTO.DTOVoluntario;
 import InterfazDAO.IDAO_1;
 import InterfazDAO.IDAO_2;
 import dominio.Fundacion;
@@ -14,7 +16,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import conexiondb.IConfiguracionBaseDatos;
 
-public class DAOVoluntario implements IDAO_1<Voluntario>, IDAO_2<Voluntario> {
+public class DAOVoluntario implements IDAO_1<DTOVoluntario>, IDAO_2<DTOVoluntario> {
 
     private Connection conexion;
     private PreparedStatement preparedStatement;
@@ -27,7 +29,7 @@ public class DAOVoluntario implements IDAO_1<Voluntario>, IDAO_2<Voluntario> {
     }
 
     @Override
-    public boolean insertar(Voluntario voluntario) {
+    public boolean insertar(DTOVoluntario voluntario) {
         String sql = "INSERT INTO voluntarios (nombre, telefono, correo_electronico, habilidades, disponibilidad, Fundacion_idFundacion) VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
@@ -37,7 +39,7 @@ public class DAOVoluntario implements IDAO_1<Voluntario>, IDAO_2<Voluntario> {
             preparedStatement = conexion.prepareStatement(sql);
             preparedStatement.setString(1, voluntario.getNombre());
             preparedStatement.setInt(2, voluntario.getTelefono());
-            preparedStatement.setString(3, voluntario.getCorreo_electronico());
+            preparedStatement.setString(3, voluntario.getCorreoElectronico());
             preparedStatement.setString(4, voluntario.getHabilidades());
             preparedStatement.setString(5, voluntario.getDisponibilidad());
             preparedStatement.setInt(6, voluntario.getFundacion().getIdFundacion());
@@ -65,19 +67,19 @@ public class DAOVoluntario implements IDAO_1<Voluntario>, IDAO_2<Voluntario> {
     }
 
     @Override
-    public List<Voluntario> listar() throws SQLException {
-        List<Voluntario> lista = new ArrayList<>();
+    public List<DTOVoluntario> listar() throws SQLException {
+        List<DTOVoluntario> lista = new ArrayList<>();
         String sql = "SELECT * FROM voluntarios";
         try {
             conexion = iConfiguracionBaseDatos.obtenerConexion();
             preparedStatement = conexion.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Voluntario voluntario = new Voluntario();
+                DTOVoluntario voluntario = new DTOVoluntario();
                 voluntario.setIdVoluntario(resultSet.getInt("idVoluntarios"));
                 voluntario.setNombre(resultSet.getString("nombre"));
                 voluntario.setDireccion(resultSet.getString("direccion"));
-                voluntario.setCorreo_electronico(resultSet.getString("correo_electronico"));
+                voluntario.setCorreoElectronico(resultSet.getString("correo_electronico"));
                 voluntario.setHabilidades(resultSet.getString("habilidades"));
                 voluntario.setDisponibilidad(resultSet.getString("disponibilidad"));
                 voluntario.setTelefono(resultSet.getInt("telefono"));
@@ -93,8 +95,8 @@ public class DAOVoluntario implements IDAO_1<Voluntario>, IDAO_2<Voluntario> {
     }
 
     @Override
-    public List<Voluntario> listarSegunFundacion(Fundacion fundacion) {
-        List<Voluntario> lista = new ArrayList<>();
+    public List<DTOVoluntario> listarSegunFundacion(DTOFundacion fundacion) {
+        List<DTOVoluntario> lista = new ArrayList<>();
         String sql = "SELECT * FROM voluntarios WHERE Fundacion_idFundacion = ?";
         try {
             conexion = iConfiguracionBaseDatos.obtenerConexion();
@@ -102,11 +104,11 @@ public class DAOVoluntario implements IDAO_1<Voluntario>, IDAO_2<Voluntario> {
             preparedStatement.setInt(1, fundacion.getIdFundacion());
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Voluntario voluntario = new Voluntario();
+                DTOVoluntario voluntario = new DTOVoluntario();
                 voluntario.setIdVoluntario(resultSet.getInt("idVoluntarios"));
                 voluntario.setNombre(resultSet.getString("nombre"));
                 voluntario.setDireccion(resultSet.getString("direccion"));
-                voluntario.setCorreo_electronico(resultSet.getString("correo_electronico"));
+                voluntario.setCorreoElectronico(resultSet.getString("correo_electronico"));
                 voluntario.setHabilidades(resultSet.getString("habilidades"));
                 voluntario.setDisponibilidad(resultSet.getString("disponibilidad"));
                 voluntario.setTelefono(resultSet.getInt("telefono"));
@@ -123,7 +125,7 @@ public class DAOVoluntario implements IDAO_1<Voluntario>, IDAO_2<Voluntario> {
     }
 
     @Override
-    public boolean editar(Voluntario voluntario) {
+    public boolean editar(DTOVoluntario voluntario) {
         String sql = "UPDATE voluntarios SET nombre=?, telefono=?, correo_electronico=?, habilidades=?, disponibilidad=? WHERE idVoluntarios=?";
         try {
             conexion = iConfiguracionBaseDatos.obtenerConexion();
@@ -132,7 +134,7 @@ public class DAOVoluntario implements IDAO_1<Voluntario>, IDAO_2<Voluntario> {
             preparedStatement = conexion.prepareStatement(sql);
             preparedStatement.setString(1, voluntario.getNombre());
             preparedStatement.setInt(2, voluntario.getTelefono());
-            preparedStatement.setString(3, voluntario.getCorreo_electronico());
+            preparedStatement.setString(3, voluntario.getCorreoElectronico());
             preparedStatement.setString(4, voluntario.getHabilidades());
             preparedStatement.setString(5, voluntario.getDisponibilidad());
             preparedStatement.setInt(6, voluntario.getIdVoluntario());
@@ -159,7 +161,7 @@ public class DAOVoluntario implements IDAO_1<Voluntario>, IDAO_2<Voluntario> {
     }
 
     @Override
-    public Voluntario buscar(Voluntario voluntario) {
+    public DTOVoluntario buscar(DTOVoluntario voluntario) {
         String sql = "SELECT * FROM voluntarios WHERE idVoluntarios=?; ";
         try {
             conexion = iConfiguracionBaseDatos.obtenerConexion();
@@ -170,7 +172,7 @@ public class DAOVoluntario implements IDAO_1<Voluntario>, IDAO_2<Voluntario> {
                 voluntario.setIdVoluntario(resultSet.getInt("idVoluntarios"));
                 voluntario.setNombre(resultSet.getString("nombre"));
                 voluntario.setDireccion(resultSet.getString("direccion"));
-                voluntario.setCorreo_electronico(resultSet.getString("correo_electronico"));
+                voluntario.setCorreoElectronico(resultSet.getString("correo_electronico"));
                 voluntario.setHabilidades(resultSet.getString("habilidades"));
                 voluntario.setTelefono(resultSet.getInt("telefono"));
             }
@@ -185,7 +187,7 @@ public class DAOVoluntario implements IDAO_1<Voluntario>, IDAO_2<Voluntario> {
     }
 
     @Override
-    public boolean eliminar(Voluntario voluntario) {
+    public boolean eliminar(DTOVoluntario voluntario) {
         String sql = "DELETE FROM voluntarios WHERE idVoluntarios= ? AND Fundacion_idFundacion = ?";
         try {
             conexion = iConfiguracionBaseDatos.obtenerConexion();

@@ -1,5 +1,7 @@
 package dominio;
 
+import DTO.DTOFundacion;
+
 public class Mascota {
 
     private int idMascota;
@@ -11,7 +13,7 @@ public class Mascota {
     private String color;
     private String estado_salud;
     private Boolean disponible;
-    private Fundacion fundacion;
+    private DTOFundacion fundacion;
 
     public Mascota() {
     }
@@ -29,7 +31,7 @@ public class Mascota {
     }
 
     public Mascota(int idMascota, String nombre, String especie, String raza, String genero, int edad,
-            String color, String estado_salud, Boolean disponible, Fundacion fundacion) {
+            String color, String estado_salud, Boolean disponible, DTOFundacion fundacion) {
         this.idMascota = idMascota;
         this.nombre = nombre;
         this.especie = especie;
@@ -42,7 +44,7 @@ public class Mascota {
     }
 
     public Mascota(String nombre, String especie, String raza, String genero, int edad,
-            String color, String estado_salud, Boolean disponible, Fundacion fundacion) {
+            String color, String estado_salud, Boolean disponible, DTOFundacion fundacion) {
         this.nombre = nombre;
         this.especie = especie;
         this.raza = raza;
@@ -126,11 +128,11 @@ public class Mascota {
         this.estado_salud = estado_salud;
     }
 
-    public Fundacion getFundacion() {
+    public DTOFundacion getFundacion() {
         return fundacion;
     }
 
-    public void setFundacion(Fundacion fundacion) {
+    public void setFundacion(DTOFundacion fundacion) {
         this.fundacion = fundacion;
     }
 
